@@ -57,6 +57,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Description"
         value={form.description}
         onChange={value => handleChange('description', value)}
+        // the description field is optional
       />
 
       <TextField
