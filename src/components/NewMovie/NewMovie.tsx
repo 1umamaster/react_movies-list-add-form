@@ -20,16 +20,19 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   const [formKey, setFormKey] = useState(0);
 
   const handleChange = (name: string, value: string) => {
-    setForm(prev => ({ ...prev, [name]: value}));
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const isFormValid = ['title', 'imgUrl', 'imdbUrl', 'imdbId']
-    .every(field => form[field as keyof typeof form].trim());
+  const isFormValid = ['title', 'imgUrl', 'imdbUrl', 'imdbId'].every(field =>
+    form[field as keyof typeof form].trim(),
+  );
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      return;
+    }
 
     onAdd({ ...form });
 
@@ -45,7 +48,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         name="title"
         label="Title"
         value={form.title}
-        onChange={(value) => handleChange('title', value)}
+        onChange={value => handleChange('title', value)}
         required
       />
 
@@ -53,15 +56,14 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         name="description"
         label="Description"
         value={form.description}
-        onChange={(value) => handleChange('description', value)}
-        required
+        onChange={value => handleChange('description', value)}
       />
 
       <TextField
         name="imgUrl"
         label="Image URL"
         value={form.imgUrl}
-        onChange={(value) => handleChange('imgUrl', value)}
+        onChange={value => handleChange('imgUrl', value)}
         required
       />
 
@@ -69,7 +71,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         name="imdbUrl"
         label="Imdb URL"
         value={form.imdbUrl}
-        onChange={(value) => handleChange('imdbUrl', value)}
+        onChange={value => handleChange('imdbUrl', value)}
         required
       />
 
@@ -77,7 +79,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         name="imdbId"
         label="Imdb ID"
         value={form.imdbId}
-        onChange={(value) => handleChange('imdbId', value)}
+        onChange={value => handleChange('imdbId', value)}
         required
       />
 
